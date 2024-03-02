@@ -27,10 +27,10 @@ npm install node-fetch@2
 8. Test your bot in Discord by sending `$ping` in a channel the bot is in. The bot will respond `pong!`.
 9. Start your Enshrouded server in Discord using `$startserver`. Stop it with `$stopserver`.
 
-## Installing as a service (optional)
+## Installing as a Service (Optional)
 1. In this directory, run `npm install node-windows`.
 2. Edit `installWindowsService.js` to your liking. The service name and description are cosmetic, but the script path needs to match where you set up your project folder. I don't know if this path can be relative to `installWindowsService.js` itself, so I'm using the absolute path.
-3. In this directory, run `node installWindowsService.js install`
+3. In this directory, run `node installWindowsService.js install`.
 4. Now your Discord bot will run in the background whenever you first log into Windows.
-5. The service can be restarted or disabled from the Windows `services.msc` menu.
+5. The service can be restarted or stopped from the Windows `services.msc` menu.
 6. I don't fully understand how to use `node-windows` to uninstall the service, so I'll just use `sc.exe delete <Service_Name>` if I ever want to remove the Windows service, and then just delete the `daemon` directory that gets created in this directory.
