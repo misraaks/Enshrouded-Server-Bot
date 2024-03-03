@@ -34,3 +34,6 @@ npm install node-fetch@2
 4. Now your Discord bot will run in the background whenever you first log into Windows.
 5. The service can be restarted or stopped from the Windows `services.msc` menu.
 6. I don't fully understand how to use `node-windows` to uninstall the service, so I'll just use `sc.exe delete <Service_Name>` if I ever want to remove the Windows service, and then just delete the `daemon` directory that gets created in this directory.
+
+## Troubleshooting
+1. Be sure to run `EnshroudedServer.exe` manually at least once once you decide on its filepath. This will cause Windows Firewall to prompt you to allow the inbound connections. You will need to do this again if you ever relocate the executable. 
