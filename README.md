@@ -40,4 +40,3 @@ npm install node-fetch@2
 1. Be sure to run `EnshroudedServer.exe` manually at least once once you decide on its filepath. This will cause Windows Firewall to prompt you to allow the inbound connections. You will need to do this again if you ever relocate the executable.
 2. Try double clicking `startServerManually.bat` to update and start your server manually, then see if you can connect.
 3. I am currently experiencing trouble connecting to the game server when the bot is running as a Windows service and starts the game server. TODO: try running the bot using `startBotManually.bat` instead of as a Windows service...see if that helps.
-4. TODO: experiment with launching the game server using `exec` instead of `spawn` in `bot.js`
