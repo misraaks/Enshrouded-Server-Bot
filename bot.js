@@ -74,7 +74,7 @@ async function updateAndStartServer(message) {
 
 function backupFile(filePath, backupDir, message) {
   const fileName = path.basename(filePath);
-  timestamp = new Date().toISOString().replace(/[\\-T:Z.]/g, '');
+  timestamp = new Date().toISOString().replace(/[-T:Z.]/g, '');
   backupPath = path.join(backupDir, `${timestamp}_${fileName}.bak`);
   try {
     message.channel.send("Creating savegame backup...").then(() => {
