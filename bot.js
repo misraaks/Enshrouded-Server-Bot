@@ -6,11 +6,11 @@ const fs = require('fs');
 const path = require('path');
 
 // Change these with relative paths to your files
-const updateBin = 'C:/Enshrouded-Server-Bot/steamcmd/steamcmd.exe'
-const serverBin = 'C:/Enshrouded-Server-Bot/steamcmd/steamapps/common/EnshroudedServer/enshrouded_server.exe'
-const fileToBackup = 'C:/Enshrouded-Server-Bot/steamcmd/steamapps/common/EnshroudedServer/savegame/3ad85aea'
-const backupDirectory = 'D:/OneDrive/Documents/EnshroudedServerSaves/'
-const serverQueryPort = 15637
+const updateBin = 'C:/Enshrouded-Server-Bot/steamcmd/steamcmd.exe';
+const serverBin = 'C:/Enshrouded-Server-Bot/steamcmd/steamapps/common/EnshroudedServer/enshrouded_server.exe';
+const fileToBackup = 'C:/Enshrouded-Server-Bot/steamcmd/steamapps/common/EnshroudedServer/savegame/3ad85aea';
+const backupDirectory = 'D:/OneDrive/Documents/EnshroudedServerSaves/';
+const serverQueryPort = '15637';
 
 // Other Globals
 const prefix = '$';
@@ -60,7 +60,7 @@ async function updateAndStartServer(message) {
   try {
     await updateServer(message);
     message.channel.send("Starting server...").then(() => {
-      serverProcess = spawn(serverBin);
+      serverProcess = spawn(serverBin, [], { shell: true });
       serverProcess.on('close', (code) => {
         console.log(`Server process exited with code ${code}`);
       });
@@ -74,14 +74,14 @@ async function updateAndStartServer(message) {
 
 function backupFile(filePath, backupDir, message) {
   const fileName = path.basename(filePath);
-  timestamp = new Date().toISOString().replace(/[-:T.]/g, '').slice(0, 14);;
+  timestamp = new Date().toISOString().replace(/[\\-T:Z.]/g, '');
   backupPath = path.join(backupDir, `${timestamp}_${fileName}.bak`);
-
   try {
-    message.channel.send("Creating savegame backup...");
-    fs.copyFileSync(filePath, backupPath);
-    console.log(`File backed up to ${backupPath}`);
-    message.channel.send("Backup complete!");
+    message.channel.send("Creating savegame backup...").then(() => {
+      fs.copyFileSync(filePath, backupPath);
+      console.log(`File backed up to ${backupPath}`);
+      message.channel.send("Backup complete!");
+    });
   } catch (error) {
     console.error(`Error backing up file: ${error.message}`);
     message.channel.send("Error backing up savegame.");
@@ -119,14 +119,10 @@ client.on('messageCreate', (message) => {
       message.channel.send('The server is already running.');
       return;
     }
-    
-    // Backup the save file before starting the server 
     backupFile(fileToBackup, backupDirectory, message);
-
-    // Call the async update and start server function
     updateAndStartServer(message);
   }
-  
+
   // $stopserver
   else if (message.content.startsWith(`${prefix}stopserver`)) {
     if (serverProcess) {
