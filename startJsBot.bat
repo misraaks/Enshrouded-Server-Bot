@@ -2,4 +2,4 @@
 
 cd C:\Enshrouded-Server-Bot
 
-node bot.js
+node .\bot.js
