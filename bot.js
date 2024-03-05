@@ -6,9 +6,9 @@ const fs = require('fs');
 const path = require('path');
 
 // Change these with relative paths to your files
-const updateBin = './steamcmd/steamcmd.exe'
-const serverBin = './steamcmd/steamapps/common/EnshroudedServer/enshrouded_server.exe'
-const fileToBackup = './steamcmd/steamapps/common/EnshroudedServer/savegame/3ad85aea'
+const updateBin = 'C:/Enshrouded-Server-Bot/steamcmd/steamcmd.exe'
+const serverBin = 'C:/Enshrouded-Server-Bot/steamcmd/steamapps/common/EnshroudedServer/enshrouded_server.exe'
+const fileToBackup = 'C:/Enshrouded-Server-Bot/steamcmd/steamapps/common/EnshroudedServer/savegame/3ad85aea'
 const backupDirectory = 'D:/OneDrive/Documents/EnshroudedServerSaves/'
 const serverQueryPort = 15637
 

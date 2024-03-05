@@ -3,7 +3,7 @@ A Discord bot that allows channel members to start and stop an Enshrouded server
 
 ## Setup
 1. Install Enshrouded server using steamcmd, as described [here](https://hub.tcno.co/games/enshrouded/dedicated_server/). 
-2. Check the global variables in `bot.js` and edit them to your liking. The paths can (and probably should) be relative to the `bot.js` script itself. For my setup, I put my `steamcmd` folder containing the Enshrouded install in this project directory. Even if you also put your `steamcmd` folder in this folder, you still need to edit `backupDirectory` and `serverQueryPort` to match your preferences and server settings.
+2. Check the global variables in `bot.js` and edit them to your liking.
 3. Setup your Discord bot (instructions copied from Stonley890's [mc-console-bot](https://github.com/Stonley890/mc-console-bot))
     1. Go to https://discord.com/developers/applications and create a new application. Give it any name, description, or icon.
     2. Go to the **Bot** tab and create a bot. Give it a name.
@@ -29,7 +29,7 @@ npm install node-fetch@2
 
 ## Installing as a Service (Optional)
 1. In this directory, run `npm install node-windows`.
-2. Edit `installWindowsService.js` to your liking. The service name and description are cosmetic, but the script path needs to match where you set up your project folder. I don't know if this path can be relative to `installWindowsService.js` itself, so I'm using the absolute path.
+2. Edit `installWindowsService.js` to your liking. The service name and description are purely cosmetic.
 3. In this directory, run `node installWindowsService.js install`.
 4. Now your Discord bot will run in the background whenever you first log into Windows.
 5. The service can be restarted or stopped from the Windows `services.msc` menu.
